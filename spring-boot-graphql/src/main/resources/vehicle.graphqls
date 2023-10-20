@@ -1,0 +1,22 @@
+type Vehicle { # GraphQL'in bize döndürdüğü içerik
+    id: ID!,
+    type: String!,
+    modelCode: String,
+    brandName: String,
+    launchDate: String
+}
+
+input VehicleDto{ #GraphQl'e istek atarken gönderdiğimiz parametreler
+    type: String!,
+    modelCode: String!,
+    brandName: String
+}
+
+type Query{ #Query işlemlerini tanımladığımız alan (get gibi sorgu metodları)
+    getVehicles(name:String):[Vehicle]
+    getById(id: ID):Vehicle
+}
+
+type Mutation{ #Data eklemek, güncellemek veya silmek için (CRUD operasyonları) oluşturulan metodları tanımladığımız alan
+    createVehicle(vehicleDto: VehicleDto):Vehicle
+}
